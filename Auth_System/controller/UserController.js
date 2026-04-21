@@ -4,16 +4,19 @@ import * as userModel from "../models/UserModel.js";
 
 export const register = async (req, res) => {
     const{
-        name,
-        birthdate,
+        firstName,
+        lastName,
+        dob,
+        course,
+        major,
         address,
         program,
-        studentStatus,
+        status,
         email,
         password} = req.body;
 
     try {
-        const userProfile = {name, birthdate, address, program, studentStatus};
+        const userProfile = {firstName, lastName, dob, course, major, address, program, status};
         const user = await userModel.createUser(userProfile, email, password);
         res.status(201).json({success:true , message:user})
     }catch(err){
